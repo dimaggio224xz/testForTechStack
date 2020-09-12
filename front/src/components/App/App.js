@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
+import CreateNewRent from '../CreateNewRent';
 
 const App = () => {
 
     return (
         <>
-        <h1>FFrrTTThhh ukysdhkf 38755</h1>
+        <div className='wrapper'>
+            <div className='container'>
+            <h1 className='title'>Awesome Bike Rental</h1>
+            
+                <CreateNewRent/>
+            </div>
+        </div>
         </>
     )
 }
 
-const mapStateToProps = (store) => ({...store});
-export default connect( mapStateToProps )(App);
+export default App;

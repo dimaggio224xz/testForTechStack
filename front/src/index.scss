@@ -1,7 +1,22 @@
+
 *, *:before, *:after{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: rgb(80, 80, 80);
+}
+
+
+
+.wrapper {
+	padding-top: 40px;
+	min-width: 100%;
+	min-height: 100vh;
+	background-color: rgb(245, 245, 245);
+}
+
+.title {
+	font-size: 35px;
 }
 
 
