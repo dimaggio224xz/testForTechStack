@@ -14,6 +14,7 @@
 
 
 .wrapper {
+	position: relative;
 	padding-top: 40px;
 	min-width: 100%;
 	min-height: 100vh;
@@ -24,6 +25,7 @@
 	font-size: 35px;
 	margin-bottom: 30px;
 }
+
 
 
 
@@ -59,8 +61,64 @@
 			& input {
 				@extend %border-for-blocks;
 				height: 40px;
+				width: 260px;
+				padding: 0 12px;
 			}
+
+			& select {
+				@extend %border-for-blocks;
+				width: 260px;
+				height: 40px;
+				padding: 0 10px;
+			}
+
+			&:nth-child(3) {
+				& input {
+					width: 140px;
+				}
+			}
+		}
+
+		& button {
+			border: 2px solid rgb(22, 158, 129);
+			border-radius: 4px;
+			margin-top: 35px;
+			width: 140px;
+			height: 40px;
+			color: white;
+			background-color: rgb(34, 186, 153);
 		}
 	}
 }
 
+
+
+.error {
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	min-width: 100vW;
+	min-height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding-top: 80px;
+
+	&-block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: rgb(251, 202, 197);
+		border: 2px solid rgb(255, 0, 0);
+		border-radius: 14px;
+		width: 500px;
+		height: 200px;
+		padding-top: 30px;
+
+		& .error-msg {
+			font-size: 40px;
+			font-weight: bold;
+			color: rgb(0, 0, 0);
+		}
+	}
+}
