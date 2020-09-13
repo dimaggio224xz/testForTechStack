@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import mapDispatchToProps from '../actions';
 
-const ShowError = () => {
+const ShowError = (props) => {
+
+    const errorOf = () => {
+        props.errorOf();
+    }
     
     return (
         <>
@@ -12,7 +16,7 @@ const ShowError = () => {
                     Something go wrong...
                 </div>
 
-                <button className='btn btn-secondary'>Ok!</button>
+                <button onClick={()=> errorOf()} className='btn btn-light'>Ok!</button>
             </div>
         </div>
         </>

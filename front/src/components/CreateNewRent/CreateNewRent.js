@@ -10,8 +10,8 @@ const CreateNewRent = (props) => {
     const [bikePrice, setBikePrice] = useState('');
 
     const submitData = () => {
-        if (bikeName !== '' && bikePrice !== '' && +bikePrice !== 0) {
-            props.putFreeBikes(bikeName, bikeType, bikePrice);
+        if (bikeName !== '' && bikePrice !== '' && +bikePrice > 0 && +bikePrice < 10000) {
+            props.saveBikes(bikeName, bikeType, bikePrice);
             setBikeName('');
             setBikeType('Road');
             setBikePrice('');
@@ -19,8 +19,16 @@ const CreateNewRent = (props) => {
     }
 
 
+    const chackBikeName = (e) => {
+        const name = e.target.value;
+        if (name.length < 26) {
+            setBikeName(name);
+        }
+    }
+
+
     const chackbikePriceAndSet = (e) => {
-        let price = e.target.value;
+        const price = e.target.value;
 
         if (chackPrice(price))
             setBikePrice(price);
@@ -46,7 +54,7 @@ const CreateNewRent = (props) => {
             <div className='new-rent-wrapper'>
                 <label>
                     <span>Bike name</span>
-                    <input onChange={(e)=>setBikeName(e.target.value)} value={bikeName} type='text'></input>
+                    <input onChange={(e)=>chackBikeName(e)} value={bikeName} type='text'></input>
                 </label>
 
                 <label>

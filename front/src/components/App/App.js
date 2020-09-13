@@ -1,29 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CreateNewRent from '../CreateNewRent';
+
 import ShowError from '../ShowError';
+import CreateNewRent from '../CreateNewRent';
+import AvailableBicycles from '../AvailableBicycles';
 
+const mapStateToProps = (store) => ({error: store.error});
 
-const App = () => {
+const App = (props) => {
+
+    const error = props.error ? 'position-relative' : 'position-relative d-none';
 
     return (
         <>
         <div className='wrapper'>
-            <ShowError/>
+
+            <div className={error}>
+                <ShowError/>
+            </div>
+            
             
             <div className='container'>
                 <h1 className='title'>Awesome Bike Rental</h1>
 
-                
-                
                 <CreateNewRent/>
+
+                <AvailableBicycles/>
             </div>
         </div>
         </>
     )
 }
 
-
-const mapStateToProps = (store) => ({...{error: store.error}});
 
 export default connect( mapStateToProps )(App);

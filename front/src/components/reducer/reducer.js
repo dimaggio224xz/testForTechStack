@@ -6,10 +6,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
+
         case 'PUT_FREE_BIKES':
+            console.log( action)
             return {...state, ...{freeBikes: action.data}};
 
         case 'SHOW_ERROR':
+            return {...state, ...{error: true}};
+
+        case 'HIDE_ERROR':
             return {...state, ...{error: false}};
 
         default:
