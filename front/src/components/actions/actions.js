@@ -8,6 +8,12 @@ const putFreeBikes = (data) => {
     }
 }
 
+const putRentedBikes = (data) => {
+    return {
+        type: 'PUT_RENTED_BIKES',
+        data
+    }
+}
 
 const errorOn = () => {
     return {
@@ -63,6 +69,17 @@ const deleteBikeThunk = (_id) => (dispatch, getState) => {
         .catch(err => dispatch(errorOn()))
 }
 
+const putRentedBikesThunk = () => dispatch => {
+    return getServerData.getRentedBikes()
+    .then(res => {
+        if (res.msg) {
+            return dispatch(errorOn());
+        } else
+            return dispatch(putRentedBikes(res));
+    })
+    .catch(err => dispatch(errorOn()))
+}
+
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -70,7 +87,8 @@ const mapDispatchToProps = (dispatch) => {
         saveBikes: (name, type, price)=> dispatch(saveBikesThunk(name, type, price)),
         errorOf: ()=> dispatch(errorOf()),
         putFreeBikes: ()=> dispatch(putFreeBikesThunk()),
-        deleteBike: (_id)=> dispatch(deleteBikeThunk(_id))
+        deleteBike: (_id)=> dispatch(deleteBikeThunk(_id)),
+        putRentedBikes: ()=> dispatch(putRentedBikesThunk())
     }
 }
 

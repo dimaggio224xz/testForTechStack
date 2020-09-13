@@ -19,6 +19,12 @@ const getServerData = {
         else return await res.json();
     },
 
+    getRentedBikes: async () => {
+        const res = await fetch("/rented-bikes")
+        if (!res.ok) return {msg: 'ERROR'};
+        else return await res.json();
+    },
+
     deleteBike: async (_id) => {
         const res = await fetch("/delete-bike/" + _id, { method: "DELETE" })
         if (!res.ok) return {msg: 'ERROR'};

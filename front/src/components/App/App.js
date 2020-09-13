@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import ShowError from '../ShowError';
 import CreateNewRent from '../CreateNewRent';
+import YourRent from '../YourRent';
 import AvailableBicycles from '../AvailableBicycles';
 
 const mapStateToProps = (store) => ({error: store.error});
@@ -24,6 +25,8 @@ const App = (props) => {
                 <h1 className='title'>Awesome Bike Rental</h1>
 
                 <CreateNewRent/>
+
+                <YourRent/>
 
                 <AvailableBicycles/>
             </div>

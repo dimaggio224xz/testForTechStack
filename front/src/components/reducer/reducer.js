@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
             console.log( action)
             return {...state, ...{freeBikes: action.data}};
 
+        case 'PUT_RENTED_BIKES':
+            console.log( action)
+            return {...state, ...{rentedBikes: action.data}};
+
         case 'SHOW_ERROR':
             return {...state, ...{error: true}};
 

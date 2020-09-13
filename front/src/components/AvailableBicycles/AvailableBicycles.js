@@ -6,18 +6,20 @@ import FreeBikeBox from '../FreeBikeBox';
 const mapStateToProps = (store) => ({freeBikes: store.freeBikes});
 
 const AvailableBicycles = (props) => {
+
+    const freeBikes = props.freeBikes;
     
     useEffect(()=>{
         props.putFreeBikes()
     },[])
 
     
-    let amount = props.freeBikes.length;
-    let arrOfBikes = props.freeBikes.map(i=> <FreeBikeBox key={i._id} data={i}/>)
+    let amount = freeBikes.length;
+    let arrOfBikes = freeBikes.map(i=> <FreeBikeBox key={i._id} data={i}/>)
 
     useEffect(()=> {
-        amount = props.freeBikes.length;
-        arrOfBikes = props.freeBikes.map(i=> <FreeBikeBox key={i._id} data={i}/>)
+        amount = freeBikes.length;
+        arrOfBikes = freeBikes.map(i=> <FreeBikeBox key={i._id} data={i}/>)
     }, [props.freeBikes])
 
     return (

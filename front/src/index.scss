@@ -100,6 +100,24 @@
 	}
 }
 
+.rented-bikes {
+	padding-bottom: 30px;
+	
+	& h2 {
+		height: 20px;
+		display: block;
+		margin-bottom: 30px;
+		font-size: 28px;
+		
+		&:before {
+			content: '🤩';
+			bottom: 4px;
+			font-size: 26px;
+			margin-right: 8px;
+		}
+	}
+}
+
 .free-bikes {
 	& h2 {
 		height: 20px;

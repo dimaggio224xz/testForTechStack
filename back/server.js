@@ -41,6 +41,17 @@ app.get('/free-bikes', async (req, res) => {
     }
 })
 
+app.get('/rented-bikes', async (req, res) => {
+
+    const sendData = await Bicycle.find({isRented: true}).sort({_id:-1});
+    if (sendData) {
+        res.end(JSON.stringify([...sendData]));
+    }
+    else {
+        res.end(JSON.stringify({msg: 'ERROR'}));
+    }
+})
+
 
 
 app.post('/create-new-bike', async (req, res) => {
