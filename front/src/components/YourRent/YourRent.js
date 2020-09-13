@@ -14,17 +14,15 @@ const YourRent = (props) => {
         props.putRentedBikes()
     },[])
 
-
+    let totalPrice = getPrice(rentedBikes);
     let arrOfBikes = rentedBikes.map(i=> <RentBikeBox key={i._id} data={i}/>)
 
     useEffect(()=> {
-        arrOfBikes = rentedBikes.map(i=> <RentBikeBox key={i._id} data={i}/>)
+        arrOfBikes = rentedBikes.map(i=> <RentBikeBox key={i._id} data={i}/>);
+        totalPrice = getPrice(rentedBikes);
     }, [props.rentedBikes])
 
-    let totalPrice;
-    if (rentedBikes.length === 0) {
-        totalPrice = 0;
-    }
+
 
     return (
         <div className='rented-bikes'>
@@ -37,6 +35,23 @@ const YourRent = (props) => {
 
         </div>
     )
+}
+
+function getPrice(arr) {
+    if(arr.length === 0) {
+        return '0';
+    }
+    const onrHour = 3600000;
+    const timeNow = Date.now();
+    const timeArr = arr.map(i => {
+        let num = +((timeNow - i.startRentTime) / onrHour).toFixed(0)+1;
+
+
+
+        return num;
+    });
+    console.log(timeArr)
+
 }
 
 
