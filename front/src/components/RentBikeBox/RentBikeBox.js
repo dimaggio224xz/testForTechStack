@@ -10,7 +10,7 @@ const RentBikeBox = (props) => {
     const data = props.data;
 
     const moveToFree = () => {
-        
+        props.moveToFree(data)
     }
     
     return (

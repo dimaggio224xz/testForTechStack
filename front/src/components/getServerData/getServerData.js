@@ -30,6 +30,26 @@ const getServerData = {
         if (!res.ok) return {msg: 'ERROR'};
         else return await res.json();
     },
+
+    moveToRent: async (_id, time) => {
+        const res = await fetch("/move-to-rent", {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({_id, time})
+        })
+        if (!res.ok) return {msg: 'ERROR'};
+        else return await res.json();
+    },
+
+    moveToFree: async (_id) => {
+        const res = await fetch("/move-to-free/" + _id, { method: "PUT" })
+        if (!res.ok) return {msg: 'ERROR'};
+        else return await res.json();
+    }
+
 }
 
 export default getServerData;

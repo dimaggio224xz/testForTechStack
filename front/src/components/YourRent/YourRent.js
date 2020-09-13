@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import mapDispatchToProps from '../actions';
-import RentBikeBox from '../FreeBikeBox';
+import RentBikeBox from '../RentBikeBox';
 
 const mapStateToProps = (store) => ({rentedBikes: store.rentedBikes});
 

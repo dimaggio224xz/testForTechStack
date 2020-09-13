@@ -9,6 +9,10 @@ const FreeBikeBox = (props) => {
 
     const data = props.data;
 
+    const moveToRent = () => {
+        props.moveToRent(data)
+    }
+
     const deleteBike = () => {
         props.deleteBike(data._id)
     }
@@ -36,7 +40,7 @@ const FreeBikeBox = (props) => {
             </div>
 
             <div className='d-flex'>
-                <button className='blue-btn'>Rent</button>
+                <button onClick={()=>moveToRent()} className='blue-btn'>Rent</button>
                 <button onClick={()=>deleteBike()} className='red-btn'>Delete</button>
             </div>
         </div>

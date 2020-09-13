@@ -53,6 +53,45 @@ app.get('/rented-bikes', async (req, res) => {
 })
 
 
+app.post('/move-to-rent', async (req, res) => {
+    
+    const {_id, time} = req.body;
+
+    if (!_id || !time) {
+        res.end(JSON.stringify({msg: 'ERROR'}));
+        return;
+    }
+
+    Bicycle.findByIdAndUpdate(_id, { startRentTime: time, isRented: true },
+        function(err) {
+            if (err) {
+                res.end(JSON.stringify({msg: 'ERROR1'}));
+            } else {
+                res.end(JSON.stringify({msg: 'SAVE'}));
+            }
+    })
+})
+
+
+app.put('/move-to-free/:id', (req, res) => {
+    if(req.params.id) {
+        const _id = req.params.id
+
+        Bicycle.findByIdAndUpdate(_id, { startRentTime: 0, isRented: false },
+            function(err) {
+                if (err) {
+                    res.end(JSON.stringify({msg: 'ERROR1'}));
+                } else {
+                    res.end(JSON.stringify({msg: 'SAVE'}));
+                }
+        })
+    } 
+    else {
+        res.end(JSON.stringify({msg: 'ERROR'}))
+    }
+})
+
+
 
 app.post('/create-new-bike', async (req, res) => {
 
