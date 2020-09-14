@@ -25,11 +25,6 @@ const getServerData = {
         else return await res.json();
     },
 
-    getFreeBikes: async () => {
-        const res = await fetch("/free-bikes")
-        if (!res.ok) throw new Error(`COULD_NOT_GET_DATA`);
-        else return await res.json();
-    },
 
     getRentedBikes: async () => {
         const res = await fetch("/rented-bikes")
