@@ -23,6 +23,14 @@ const putRentAndFree = (rent, free) => {
     }
 }
 
+const chackAndPutPrice = (fullPrice, chack) => {
+    return {
+        type: 'CHACK_AND_PUT_PRICE',
+        fullPrice,
+        chack
+    }
+}
+
 const errorOn = () => {
     return {
         type: 'SHOW_ERROR'
@@ -34,6 +42,8 @@ const errorOf = () => {
         type: 'HIDE_ERROR'
     }
 }
+
+
 
 
 
@@ -132,6 +142,20 @@ const moveToFreeThunk = (obj) => (dispatch, getState)=> {
 }
 
 
+const chackAndPutPriceThunk = (chack) => (dispatch, getState)=> {
+
+    if (chack !== getState().calcPrice.chack) {
+        return getServerData.getFullPrice()
+        .then(res => {
+            if (res.fullPrice) {    
+                return dispatch(chackAndPutPrice(res.fullPrice, chack))
+            }
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+
 
 
 
@@ -146,7 +170,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteBike: (_id)=> dispatch(deleteBikeThunk(_id)),
         putRentedBikes: ()=> dispatch(putRentedBikesThunk()),
         moveToRent: (obj)=> dispatch(moveToRentThunk(obj)),
-        moveToFree: (obj)=> dispatch(moveToFreeThunk(obj))
+        moveToFree: (obj)=> dispatch(moveToFreeThunk(obj)),
+        chackAndPutPrice: (chack)=> dispatch(chackAndPutPriceThunk(chack))
     }
 }
 

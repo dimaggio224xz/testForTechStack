@@ -53,6 +53,41 @@ app.get('/rented-bikes', async (req, res) => {
 })
 
 
+
+app.get('/full-price', async (req, res) => {
+
+    const sendData = await Bicycle.find({isRented: true}).sort({_id:-1});
+    if (sendData) {
+        
+        if(sendData.length === 0) {
+            res.end(JSON.stringify({fullPrice: 0}));
+        }
+        else {
+            const onrHour = 3600000;
+            const reducePrice = 20;
+            const timeNow = Date.now();
+        
+            const priceArr = sendData.map(i => {
+                let num = +((timeNow - i.startRentTime) / onrHour).toFixed(0)+1;
+                
+                if (num > reducePrice) {
+                    const moreReducePrice = num - reducePrice;
+                    return reducePrice * i.price + moreReducePrice * i.price / 2;
+                } else {
+                    return num * i.price;
+                }
+            });
+            const fullPrice = priceArr.reduce((a,b)=> a + b, 0);
+            res.end(JSON.stringify({fullPrice}));
+            }
+    }
+    else {
+        res.end(JSON.stringify({msg: 'ERROR'}));
+    }
+})
+
+
+
 app.post('/move-to-rent', async (req, res) => {
     
     const {_id, time} = req.body;

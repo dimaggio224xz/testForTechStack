@@ -1,7 +1,11 @@
 const initialState = {
     freeBikes: [],
     rentedBikes: [],
-    error: false
+    error: false,
+    calcPrice: {
+        fullPrice: 0,
+        chack: 0
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +19,9 @@ const reducer = (state = initialState, action) => {
 
         case 'PUT_RENT_AND_FREE':
             return {...state, ...{freeBikes: action.free, rentedBikes: action.rent}};
+
+        case 'CHACK_AND_PUT_PRICE':
+            return {...state, ...{calcPrice: {fullPrice: action.fullPrice, chack: action.chack} }};
 
         case 'SHOW_ERROR':
             return {...state, ...{error: true}};

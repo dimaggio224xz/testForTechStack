@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import mapDispatchToProps from '../actions';
 
-import makePrice from '../makePrice';
+import makePriceView from '../makePriceView';
 
 
 const FreeBikeBox = (props) => {
@@ -34,7 +34,7 @@ const FreeBikeBox = (props) => {
                 <div className='bike-box-dash'>/</div>
 
                 <div className='bike-box-price'>
-                    {makePrice(data.price)}
+                    {makePriceView(data.price)}
                 </div>
 
             </div>

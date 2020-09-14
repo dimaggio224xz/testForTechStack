@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 import mapDispatchToProps from '../actions';
 import RentBikeBox from '../RentBikeBox';
 
+import makePriceView from '../makePriceView';
+
 const mapStateToProps = (store) => ({rentedBikes: store.rentedBikes});
+
 
 
 const YourRent = (props) => {
 
     const rentedBikes = props.rentedBikes;
+
+    
+
     
     useEffect(()=>{
         props.putRentedBikes()
@@ -35,23 +41,6 @@ const YourRent = (props) => {
 
         </div>
     )
-}
-
-function getPrice(arr) {
-    if(arr.length === 0) {
-        return '0';
-    }
-    const onrHour = 3600000;
-    const timeNow = Date.now();
-    const timeArr = arr.map(i => {
-        let num = +((timeNow - i.startRentTime) / onrHour).toFixed(0)+1;
-
-
-
-        return num;
-    });
-    console.log(timeArr)
-
 }
 
 
