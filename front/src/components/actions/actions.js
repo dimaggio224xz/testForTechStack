@@ -23,6 +23,12 @@ const putRentAndFree = (rent, free) => {
     }
 }
 
+const setZeroToPrice = () => {
+    return {
+        type: 'SET_ZERO_TO_PRICE'
+    }
+}
+
 const chackAndPutPrice = (fullPrice, chack) => {
     return {
         type: 'CHACK_AND_PUT_PRICE',
@@ -143,7 +149,6 @@ const moveToFreeThunk = (obj) => (dispatch, getState)=> {
 
 
 const chackAndPutPriceThunk = (chack) => (dispatch, getState)=> {
-
     if (chack !== getState().calcPrice.chack) {
         return getServerData.getFullPrice()
         .then(res => {
@@ -171,7 +176,8 @@ const mapDispatchToProps = (dispatch) => {
         putRentedBikes: ()=> dispatch(putRentedBikesThunk()),
         moveToRent: (obj)=> dispatch(moveToRentThunk(obj)),
         moveToFree: (obj)=> dispatch(moveToFreeThunk(obj)),
-        chackAndPutPrice: (chack)=> dispatch(chackAndPutPriceThunk(chack))
+        chackAndPutPrice: (chack)=> dispatch(chackAndPutPriceThunk(chack)),
+        setZeroToPrice: ()=> dispatch(setZeroToPrice())
     }
 }
 

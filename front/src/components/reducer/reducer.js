@@ -23,6 +23,9 @@ const reducer = (state = initialState, action) => {
         case 'CHACK_AND_PUT_PRICE':
             return {...state, ...{calcPrice: {fullPrice: action.fullPrice, chack: action.chack} }};
 
+        case 'SET_ZERO_TO_PRICE':
+            return {...state, ...{calcPrice: {fullPrice: 0, chack: 0} }};
+
         case 'SHOW_ERROR':
             return {...state, ...{error: true}};
 
