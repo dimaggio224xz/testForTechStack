@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import mapDispatchToProps from '../actions';
+import mapDispatchToProps from '../../redux/actions';
 import RentBikeBox from '../RentBikeBox';
 
-import makePriceView from '../makePriceView';
+import makePriceView from '../../tools/makePriceView';
 
 const mapStateToProps = (store) => ({
     rentedBikes: store.rentedBikes,

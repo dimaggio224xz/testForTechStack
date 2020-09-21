@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import mapDispatchToProps from '../actions';
+import mapDispatchToProps from '../../redux/actions';
 
-import makePriceView from '../makePriceView';
+import makePriceView from '../../tools/makePriceView';
 
 
 const FreeBikeBox = (props) => {

@@ -1,23 +1,31 @@
-import getServerData from '../getServerData';
-
+import getServerData from '../../tools/getServerData';
+import {
+    PUT_FREE_BIKES,
+    PUT_RENTED_BIKES,
+    PUT_RENT_AND_FREE,
+    SET_ZERO_TO_PRICE,
+    CHACK_AND_PUT_PRICE,
+    SHOW_ERROR,
+    HIDE_ERROR
+} from '../actionTypes';
 
 const putFreeBikes = (data) => {
     return {
-        type: 'PUT_FREE_BIKES',
+        type: PUT_FREE_BIKES,
         data
     }
 }
 
 const putRentedBikes = (data) => {
     return {
-        type: 'PUT_RENTED_BIKES',
+        type: PUT_RENTED_BIKES,
         data
     }
 }
 
 const putRentAndFree = (rent, free) => {
     return {
-        type: 'PUT_RENT_AND_FREE',
+        type: PUT_RENT_AND_FREE,
         rent,
         free
     }
@@ -25,13 +33,13 @@ const putRentAndFree = (rent, free) => {
 
 const setZeroToPrice = () => {
     return {
-        type: 'SET_ZERO_TO_PRICE'
+        type: SET_ZERO_TO_PRICE
     }
 }
 
 const chackAndPutPrice = (fullPrice, chack) => {
     return {
-        type: 'CHACK_AND_PUT_PRICE',
+        type: CHACK_AND_PUT_PRICE,
         fullPrice,
         chack
     }
@@ -39,13 +47,13 @@ const chackAndPutPrice = (fullPrice, chack) => {
 
 const errorOn = () => {
     return {
-        type: 'SHOW_ERROR'
+        type: SHOW_ERROR
     }
 }
 
 const errorOf = () => {
     return {
-        type: 'HIDE_ERROR'
+        type: HIDE_ERROR
     }
 }
 

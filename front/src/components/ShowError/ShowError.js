@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import mapDispatchToProps from '../actions';
+import mapDispatchToProps from '../../redux/actions';
 
 const ShowError = (props) => {
 

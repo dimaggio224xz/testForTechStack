@@ -1,0 +1,7 @@
+export const PUT_FREE_BIKES = 'PUT_FREE_BIKES';
+export const PUT_RENTED_BIKES = 'PUT_RENTED_BIKES';
+export const PUT_RENT_AND_FREE = 'PUT_RENT_AND_FREE';
+export const SET_ZERO_TO_PRICE = 'SET_ZERO_TO_PRICE';
+export const CHACK_AND_PUT_PRICE = 'CHACK_AND_PUT_PRICE';
+export const SHOW_ERROR = 'SHOW_ERROR';
+export const HIDE_ERROR = 'HIDE_ERROR';
